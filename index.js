@@ -35,8 +35,8 @@ app.get("/", (req, res)=>{
 res.render("home")
 })
 
-app.listen(process.env.PORT, process.env.HOSTNAME , ()=>{
-    console.log("app is listening")
+app.listen(process.env.PORT, ()=>{
+    console.log(`App listening on ${process.env.PORT} in ${process.env.NODE_ENV} mode`)
 })
 
 app.use(errorMiddleware)
