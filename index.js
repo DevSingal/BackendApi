@@ -5,11 +5,14 @@ import { config } from "dotenv";
 import dbConnection from "./config/dbConfig.js";
 import cors from "cors";
 import { errorMiddleware } from "./middleware/error.js";
-dbConnection();
 
 config({
     path: "./config.env"
 });
+
+dbConnection();
+
+
 
 const app = express();
 
