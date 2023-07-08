@@ -2,17 +2,16 @@ import express from "express";
 import userRoutes from "./routes/users.js";
 import cookieParser from "cookie-parser";
 import { config } from "dotenv";
-import dbConnection from "./config/dbConfig.js";
-import cors from "cors";
-import { errorMiddleware } from "./middleware/error.js";
 
 config({
     path: "./config.env"
 });
 
+import dbConnection from "./config/dbConfig.js";
+import cors from "cors";
+import { errorMiddleware } from "./middleware/error.js";
+
 dbConnection();
-
-
 
 const app = express();
 
@@ -32,7 +31,7 @@ app.use("/api/v1/user", userRoutes)
 app.set("view engine", "ejs")
 
 app.get("/", (req, res)=>{
-res.render("home")
+res.send("APP IS WORKING")
 })
 
 app.listen(process.env.PORT, ()=>{

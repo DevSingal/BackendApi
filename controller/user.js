@@ -1,6 +1,5 @@
 import User from "../models/user.js";
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
 import ErrorHandler from "../middleware/error.js";
 import { setToken } from "../utils/token.js";
 
