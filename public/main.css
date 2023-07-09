@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.upperHeader {
+  display: flex;
+  width: 100dvw;
+  height: 5vh;
+  background-color: aqua;
+}
+.upperHeader a {
+  width: -moz-fit-content;
+  width: fit-content;
+  display: block;
+  margin: auto 10px auto auto;
+}
+
+header nav {
+  background-color: antiquewhite;
+  border: 2px solid red;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+header nav ul {
+  display: flex;
+  width: 27%;
+  justify-content: space-evenly;
+  list-style: none;
+}
+header nav ul a {
+  text-decoration: none;
+  color: black;
+  font-family: math;
+}
+header nav ul a:hover {
+  font-weight: 600;
+}
+
+#loginForm {
+  width: 30%;
+  margin: 1mm auto;
+}/*# sourceMappingURL=main.css.map */

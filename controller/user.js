@@ -44,7 +44,7 @@ export const loginUser = async (req, res, next) => {
     return next(new ErrorHandler("Invalid password", 404));
   }
 
-  setToken(userFound, res, "user logged in successfully", 200)
+  setToken(userFound, res, "user logged in successfully")
     
   } catch (error) {
     console.log(error);

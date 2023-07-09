@@ -1,0 +1,49 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.upperHeader {
+  display: flex;
+  width: 100dvw;
+  height: 5vh;
+  background-color: aqua;
+
+  a {
+    width: fit-content;
+    display: block;
+    margin: auto 10px auto auto;
+  }
+}
+
+header {
+  nav {
+    background-color: antiquewhite;
+    border: 2px solid red;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+
+    ul {
+      display: flex;
+      width: 27%;
+      justify-content: space-evenly;
+      list-style: none;
+
+      a{
+        text-decoration: none;
+    color: black;
+    font-family: math;
+    &:hover{
+font-weight: 600;
+    }
+      }
+    }
+  }
+}
+
+#loginForm{
+    width: 30%;
+    margin: 1mm auto;
+}

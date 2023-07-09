@@ -1,6 +1,8 @@
 import express from "express";
 import userRoutes from "./routes/users.js";
+import navigationRoutes from "./routes/navigation.js"; 
 import cookieParser from "cookie-parser";
+import path from "path";
 import { config } from "dotenv";
 
 config({
@@ -15,7 +17,7 @@ dbConnection();
 
 const app = express();
 
-
+app.use(express.static(path.join(path.resolve(), "public")));
 app.use(express.urlencoded({extended:true}))
 app.use(express.json());
 app.use(cookieParser());
@@ -26,13 +28,10 @@ app.use(cors({
 }))
 
 app.use("/api/v1/user", userRoutes)
+app.use(navigationRoutes)
 
 // View Engine
 app.set("view engine", "ejs")
-
-app.get("/", (req, res)=>{
-res.send("APP IS WORKING")
-})
 
 app.listen(process.env.PORT, ()=>{
     console.log(`App listening on ${process.env.PORT} in ${process.env.NODE_ENV} mode`)

@@ -9,7 +9,7 @@ router.post("/register", registerUser).get((req, res) => { res.render("register"
 
 router.post("/login", loginUser).get((req, res) => { res.render("login") })
 
-router.get("/logout",  logoutUser) 
+router.get("/logout",isAuthenticated,  logoutUser) 
 
 router.get("/profile",  isAuthenticated, getMyProfile )
 
