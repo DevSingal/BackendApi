@@ -90,3 +90,57 @@ export const registerUser = async (req, res, next) => {
     console.log(error);
   }
 };
+
+export const changeMyProfile = async (req, res, next) => {
+ 
+try {
+  
+  const { name, oldPass, newPass, cnfNewPass } = req.body;
+
+  if (!oldPass || !newPass || !cnfNewPass) {
+    return next(new ErrorHandler("Enter all the fields", 400));
+  }
+
+  let userFound = await User.findById(req.user._id).select("+password");
+
+  let comparedPassword = await bcrypt.compare(oldPass, userFound.password);
+
+  if (!comparedPassword) {
+    return next(new ErrorHandler("Old Password is Incorrect", 404));
+  }
+
+  if (newPass !== cnfNewPass) {
+    return next(new ErrorHandler("Passwords do not match", 400));
+  }
+
+  if(oldPass == newPass){
+    return next(new ErrorHandler("New Password cannot be same as old password", 400));
+  }
+
+  let newHashedPassword = await bcrypt.hash(newPass, 10);
+
+  await User.updateOne(
+    { _id: userFound._id },
+    {
+      $set: {
+        name,
+        password: newHashedPassword,
+      },
+    }
+  );
+
+  res.status(204).json({
+      success: true,
+      message: "Profile updated successfully",
+    });
+
+
+
+} catch (error) {
+  next(error);
+  console.log(error);
+  
+}
+
+
+};
