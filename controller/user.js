@@ -4,17 +4,21 @@ import ErrorHandler from "../middleware/error.js";
 import { setToken } from "../utils/token.js";
 
 export const getMyProfile = (req, res, next) => {
+
+let {token} = req.cookies;
+
   res.status(200).json({
     success: true,
     message: "Found user profile",
     user: req.user,
+token
   });
 };
 
 export const logoutUser = (req, res, next) => {
   res
     .status(200)
-    .cookie("token", "", { expires: new Date(Date.now()) })
+    .clearCookie("token")
     .json({
       success: true,
       message: "successfuly logged out",
@@ -44,7 +48,7 @@ export const loginUser = async (req, res, next) => {
     return next(new ErrorHandler("Invalid password", 404));
   }
 
-  setToken(userFound, res, "user logged in successfully")
+  setToken(userFound, res, "user logged in successfully", 200, "/");
     
   } catch (error) {
     console.log(error);
@@ -79,7 +83,7 @@ export const registerUser = async (req, res, next) => {
     password: hashedPassword,
   });
 
-  setToken(user, res, "user created successfully", 201)
+  setToken(user, res, "user created successfully", 201, "/")
     
   } catch (error) {
     next(error);
