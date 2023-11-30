@@ -11,5 +11,7 @@ use " https://backendapi-gumu.onrender.com/api/v1/user " as link to call the api
 
 /logout : to log user out and clear the cookie/token.
 
-/profile : to get user proflie.
+/profile : to get user profile.
+
+/profile/change : to change user profile, body req email, oldPass, newPass, cnfNewPass.
 
